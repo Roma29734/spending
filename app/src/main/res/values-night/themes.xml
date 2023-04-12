@@ -1,0 +1,58 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Spending" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/purple_200</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_200</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@color/mainBlueBlackGrey</item>
+        <item name="android:navigationBarColor">@color/mainBlueBlackGrey</item>
+        <!-- Customize your theme here. -->
+
+        <item name="android:windowBackground">@color/mainBlueBlackGrey</item>
+    </style>
+
+    <!--textView-->
+
+    <style name="mainTitleText" parent="TextAppearance.AppCompat" >
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:textColor">@color/mainLightWhiteRed</item>
+        <item name="android:textSize">30sp</item>
+    </style>
+
+    <style name="textTitleUpBar" parent="TextAppearance.AppCompat" >
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <!---->
+
+    <!--    materialButton-->
+
+    <style name="mainTitleMatButton" parent="Widget.MaterialComponents.Button" >
+        <item name="cornerRadius">25dp</item>
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="android:textColor">@color/mainWhiteRed</item>
+
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginStart">64dp</item>
+        <item name="android:layout_marginEnd">64dp</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <!---->
+
+    <style name="editText" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/text_input_box_stroke_black</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorHint">@color/secondWhite</item>
+    </style>
+</resources>
