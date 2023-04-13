@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.Navigation
 import com.example.spending.R
 import com.example.spending.base.BaseFragment
 import com.example.spending.databinding.FragmentProfileBinding
@@ -22,7 +23,13 @@ class ProfileFragment :
 
         viewModel.getProfile()
         viewModel.profile.observe(viewLifecycleOwner) {
-
+            binding.apply {
+                textName.text = it.name
+                textAge.text = it.age.toString()
+                imageButtonBack.setOnClickListener {
+                    Navigation.findNavController(view).popBackStack()
+                }
+            }
         }
     }
 }

@@ -46,6 +46,7 @@ class HomeFragment :
                 when(state) {
                     is Resource.Success -> {
                         state.data?.let { adapter.setData(it) }
+                        widget.textBalance.text = state.totalAmount.toString()
                         textEmpty.isVisible = false
                     }
                     is Resource.Empty -> {

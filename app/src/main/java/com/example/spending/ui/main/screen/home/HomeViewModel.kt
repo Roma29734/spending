@@ -1,6 +1,9 @@
 package com.example.spending.ui.main.screen.home
 
+import android.app.Application
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.spending.data.model.WastesEntity
@@ -17,7 +20,10 @@ import javax.inject.Inject
 
 class HomeViewModel @Inject constructor(
     private val repository: SpendingRepository,
-) : ViewModel() {
+    application: Application
+) : AndroidViewModel(application) {
+
+    private val context = application
 
     private var _homeState = MutableLiveData<Resource<List<WastesEntity>>>()
     val homeState get() = _homeState
@@ -34,7 +40,12 @@ class HomeViewModel @Inject constructor(
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeBy(onSuccess = { data ->
-                            _homeState.postValue(Resource.Success(data = data))
+                            val money = loadData()
+                            if(money != null) {
+                                _homeState.postValue(Resource.Success(data = data, totalAmount = money.toInt()))
+                            } else {
+                                _homeState.postValue(Resource.Success(data = data, totalAmount = 0))
+                            }
                         }, onError = {
                             _homeState.postValue(Resource.Error("read"))
                         })
@@ -68,6 +79,12 @@ class HomeViewModel @Inject constructor(
             .subscribeOn(Schedulers.io())
             .subscribeBy(onNext = {
                 repository.insertWastesTable(it)
+                val money = loadData()
+                if(money != null) {
+                    saveDate((loadData()!!.toInt() - sum.toInt()).toString())
+                } else {
+                    saveDate((0 - sum.toInt()).toString())
+                }
                 getState()
             }, onError = {
                 Log.d("HomeViewModel", "onError ${it.message} ")
@@ -82,6 +99,12 @@ class HomeViewModel @Inject constructor(
             .subscribeOn(Schedulers.io())
             .subscribeBy(onNext = {
                 repository.insertWastesTable(it)
+                val money = loadData()
+                if(money != null) {
+                    saveDate((loadData()!!.toInt() + sum.toInt()).toString())
+                } else {
+                    saveDate((0 + sum.toInt()).toString())
+                }
                 getState()
             }, onError = {
                 Log.d("HomeViewModel", "onError ${it.message} ")
@@ -93,5 +116,19 @@ class HomeViewModel @Inject constructor(
         val data = dateFormat.format(Date())
         Log.d("aboba", data)
         return data
+    }
+
+    private fun saveDate(state: String) {
+        val sheared = context.getSharedPreferences("money", AppCompatActivity.MODE_PRIVATE)
+
+        sheared.edit().apply{
+            putString("MONEY_KEY", state)
+        }.apply()
+    }
+
+    private fun loadData(): String? {
+        val sheared = context.getSharedPreferences("money", AppCompatActivity.MODE_PRIVATE)
+
+        return sheared.getString("MONEY_KEY", null)
     }
 }
