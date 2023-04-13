@@ -3,11 +3,15 @@ package com.example.spending.ui.main
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
+import androidx.lifecycle.ViewModelProvider
 import com.example.spending.R
 import com.example.spending.databinding.ActivityMainBinding
 import com.example.spending.databinding.ActivityStartBinding
+import com.example.spending.ui.main.viewModel.MainViewModel
 import com.example.spending.ui.start.StartActivity
 import dagger.android.support.DaggerAppCompatActivity
+import javax.inject.Inject
 
 class MainActivity : DaggerAppCompatActivity() {
 

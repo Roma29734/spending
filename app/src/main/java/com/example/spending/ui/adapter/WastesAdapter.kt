@@ -1,8 +1,12 @@
 package com.example.spending.ui.adapter
 
+import android.annotation.SuppressLint
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.example.spending.R
 import com.example.spending.data.model.WastesEntity
 import com.example.spending.databinding.DetailWastesRowBinding
 
@@ -27,8 +31,15 @@ class WastesAdapter(): RecyclerView.Adapter<WastesAdapter.MyViewHolder>() {
         val positionModel = model[position]
 
         holder.binding.apply {
+            if(positionModel.withdrawal) {
+                textWastes.text = "-${positionModel.sum}"
+            } else {
+
+                textWastes.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.mainGreen))
+
+                textWastes.text = "+${positionModel.sum}"
+            }
             textDate.text = positionModel.data
-            textWastes.text = positionModel.sum.toString()
             textName.text = positionModel.name
         }
     }

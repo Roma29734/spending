@@ -3,4 +3,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="an_empty_story">An empty story</string>
+    <string name="add">add</string>
+    <string name="name_category">Name category</string>
+    <string name="sum">Sum</string>
 </resources>

@@ -13,6 +13,8 @@ import com.example.spending.R
 import com.example.spending.base.BaseFragment
 import com.example.spending.databinding.FragmentHomeBinding
 import com.example.spending.ui.adapter.WastesAdapter
+import com.example.spending.ui.main.MainActivity
+import com.example.spending.ui.main.view.BottomSheetWastesReceived
 import com.example.spending.utils.Resource
 
 class HomeFragment :
@@ -24,6 +26,13 @@ class HomeFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        viewModel.getSizeTable()
+        viewModel.stateCreateTable.observe(viewLifecycleOwner) {
+            if(it != true) {
+                (requireActivity() as MainActivity).goToStart()
+            }
+        }
 
         binding.apply {
             upBar.profile.setOnClickListener{
@@ -46,6 +55,14 @@ class HomeFragment :
                         Toast.makeText(context, "Error ${state.message}", Toast.LENGTH_SHORT).show()
                     }
                 }
+            }
+            buttonWidget.matButtonSpent.setOnClickListener {
+                val bottomSheet = BottomSheetWastesReceived(viewModel::insertWastesTableSpent)
+                bottomSheet.show(childFragmentManager, "aey")
+            }
+            buttonWidget.matButtonReceived.setOnClickListener {
+                val bottomSheet = BottomSheetWastesReceived(viewModel::insertWastesTableReceived)
+                bottomSheet.show(childFragmentManager, "aey")
             }
         }
     }

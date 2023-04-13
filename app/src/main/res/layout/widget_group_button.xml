@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/materialButton"
+        android:id="@+id/matButtonReceived"
         android:layout_width="148dp"
         android:layout_height="64dp"
         android:layout_marginStart="16dp"
@@ -22,6 +22,7 @@
         />
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/matButtonSpent"
         style="@style/matButtonConnectWallet"
         android:layout_width="148dp"
         android:layout_height="64dp"
@@ -30,9 +31,9 @@
         android:backgroundTint="@color/mainBLue"
         android:text="spent"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/materialButton"
+        app:layout_constraintBottom_toBottomOf="@+id/matButtonReceived"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/materialButton"
-        app:layout_constraintTop_toTopOf="@+id/materialButton" />
+        app:layout_constraintStart_toEndOf="@+id/matButtonReceived"
+        app:layout_constraintTop_toTopOf="@+id/matButtonReceived" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

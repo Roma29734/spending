@@ -11,4 +11,5 @@ data class WastesEntity(
     @ColumnInfo(name = "name")val name: String,
     @ColumnInfo(name = "sum")val sum: Int,
     @ColumnInfo(name = "data")val data: String,
+    @ColumnInfo(name = "withdrawal")val withdrawal: Boolean,
 )
