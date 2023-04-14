@@ -6,4 +6,8 @@
     <string name="add">add</string>
     <string name="name_category">Name category</string>
     <string name="sum">Sum</string>
+    <string name="app_theme">App theme</string>
+    <string name="white">White</string>
+    <string name="dark">Dark</string>
+    <string name="system">System</string>
 </resources>

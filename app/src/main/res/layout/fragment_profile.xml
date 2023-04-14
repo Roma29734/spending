@@ -11,13 +11,13 @@
         android:id="@+id/avatarImageViewShader"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="64dp"
         android:src="@drawable/ic_launcher_background"
         app:aivs_borderColor="@color/teal_200"
         app:aivs_borderWidth="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/upBar" />
 
     <TextView
         android:id="@+id/textName"
@@ -41,15 +41,52 @@
         app:layout_constraintStart_toStartOf="@+id/textName"
         app:layout_constraintTop_toBottomOf="@+id/textName" />
 
-    <ImageButton
-        android:id="@+id/imageButtonBack"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:src="@drawable/ic_arrow_back"
-        style="@style/imageBackButton"
+    <include
+        android:id="@+id/upBar"
+        layout="@layout/up_bar_title_back"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/textView"
+        style="@style/textWastesDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/app_theme"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textAge" />
+
+
+    <RadioGroup
+        android:id="@+id/ragioGroop"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        <RadioButton
+            android:id="@+id/rBSystem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/system" />
+
+        <RadioButton
+            android:id="@+id/rBDark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/dark" />
+
+        <RadioButton
+            android:id="@+id/rBWhile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/white" />
+    </RadioGroup>
 </androidx.constraintlayout.widget.ConstraintLayout>
