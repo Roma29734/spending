@@ -29,8 +29,8 @@ class BottomSheetWastesReceived constructor(
         super.onViewCreated(view, savedInstanceState)
 
         binding.matButtonAdd.setOnClickListener {
-            if(inputCheck(binding.tiEmail.text.toString(), binding.tiPassword.text.toString())) {
-                callBackDel?.let { it1 -> it1(binding.tiEmail.text.toString(), binding.tiPassword.text.toString()) }
+            if(inputCheck(binding.tiName.text.toString(), binding.tiSum.text.toString())) {
+                callBackDel?.let { it1 -> it1(binding.tiName.text.toString(), binding.tiSum.text.toString()) }
                 this@BottomSheetWastesReceived.dismiss()
             } else {
                 Toast.makeText(context, "Empty fields", Toast.LENGTH_SHORT).show()

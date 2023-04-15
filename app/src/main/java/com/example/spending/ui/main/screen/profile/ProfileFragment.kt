@@ -1,10 +1,12 @@
 package com.example.spending.ui.main.screen.profile
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import com.example.spending.R
@@ -39,12 +41,51 @@ class ProfileFragment :
             saveTheme()
             (requireActivity() as MainActivity).setTheme()
         }
+
+        binding.matButtonSetUpCurrencies.text = "${getString(R.string.currencies_in_the_app)} ${viewModel.loadData()}"
+
+        binding.matButtonSetUpCurrencies.setOnClickListener {
+            val popupMenu = PopupMenu(context, it)
+            popupMenu.setOnMenuItemClickListener { item ->
+                when (item.itemId) {
+                    R.id.ruble -> {
+                        viewModel.saveDate("₽")
+                        binding.matButtonSetUpCurrencies.text = "${getString(R.string.currencies_in_the_app)} ${viewModel.loadData()}"
+                        true
+                    }
+                    R.id.dollar -> {
+                        viewModel.saveDate("$")
+                        binding.matButtonSetUpCurrencies.text = "${getString(R.string.currencies_in_the_app)} ${viewModel.loadData()}"
+                        true
+                    }
+                    R.id.euro -> {
+                        viewModel.saveDate("€")
+                        binding.matButtonSetUpCurrencies.text = "${getString(R.string.currencies_in_the_app)} ${viewModel.loadData()}"
+                        true
+                    }
+                    R.id.lyra -> {
+                        viewModel.saveDate("₤")
+                        binding.matButtonSetUpCurrencies.text = "${getString(R.string.currencies_in_the_app)} ${viewModel.loadData()}"
+                        true
+                    }
+                    R.id.hryvnia -> {
+                        viewModel.saveDate("₴")
+                        binding.matButtonSetUpCurrencies.text = "${getString(R.string.currencies_in_the_app)} ${viewModel.loadData()}"
+                        true
+                    }
+                    else -> {
+                        false
+                    }
+                }
+            }
+            popupMenu.inflate(R.menu.popup_menu_currency)
+            popupMenu.show()
+        }
     }
 
     private fun loadTheme() {
         val loadTheme = (requireActivity() as MainActivity).loadData()
         val saveTheme = (requireActivity() as MainActivity)
-        val group = binding.ragioGroop
         binding.ragioGroop.apply {
             if (loadTheme == null) {
                 saveTheme.saveDate(ThemeState.SYSTEM)

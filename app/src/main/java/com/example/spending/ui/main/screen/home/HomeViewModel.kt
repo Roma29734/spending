@@ -25,7 +25,7 @@ class HomeViewModel @Inject constructor(
 
     private val context = application
 
-    private var _homeState = MutableLiveData<Resource<List<WastesEntity>>>()
+    private var _homeState = MutableLiveData<ResultHome<List<WastesEntity>>>()
     val homeState get() = _homeState
 
     fun getState() {
@@ -33,7 +33,7 @@ class HomeViewModel @Inject constructor(
             .subscribeOn(Schedulers.io())
             .subscribeBy(onSuccess = { result ->
                 if (result == 0) {
-                    _homeState.postValue(Resource.Empty())
+                    _homeState.postValue(ResultHome.Empty())
                     return@subscribeBy
                 } else {
                     repository.readWastesTable()
@@ -41,18 +41,23 @@ class HomeViewModel @Inject constructor(
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeBy(onSuccess = { data ->
                             val money = loadData()
+                            var currencyResult = loadDataCurrency()
+                            if(currencyResult == null) {
+                                saveDateCurrency("$")
+                                currencyResult = loadDataCurrency()!!
+                            }
                             if(money != null) {
-                                _homeState.postValue(Resource.Success(data = data, totalAmount = money.toInt()))
+                                _homeState.postValue(ResultHome.Success(data = data.reversed(), totalAmount = money.toInt(), currency = currencyResult))
                             } else {
-                                _homeState.postValue(Resource.Success(data = data, totalAmount = 0))
+                                _homeState.postValue(ResultHome.Success(data = data.reversed(), totalAmount = 0, currency = currencyResult))
                             }
                         }, onError = {
-                            _homeState.postValue(Resource.Error("read"))
+                            _homeState.postValue(ResultHome.Error("read"))
                         })
                 }
             }, onError = {
                 Log.d("HomeViewModel", "${it.message}")
-                _homeState.postValue(Resource.Error("size"))
+                _homeState.postValue(ResultHome.Error("size"))
             })
     }
 
@@ -130,5 +135,19 @@ class HomeViewModel @Inject constructor(
         val sheared = context.getSharedPreferences("money", AppCompatActivity.MODE_PRIVATE)
 
         return sheared.getString("MONEY_KEY", null)
+    }
+
+    private fun saveDateCurrency(state: String) {
+        val sheared = context.getSharedPreferences("currency", AppCompatActivity.MODE_PRIVATE)
+
+        sheared.edit().apply{
+            putString("CURRENCY_KEY", state)
+        }.apply()
+    }
+
+    private fun loadDataCurrency(): String? {
+        val sheared = context.getSharedPreferences("currency", AppCompatActivity.MODE_PRIVATE)
+
+        return sheared.getString("CURRENCY_KEY", null)
     }
 }

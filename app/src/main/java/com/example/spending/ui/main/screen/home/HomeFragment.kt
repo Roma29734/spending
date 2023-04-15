@@ -44,15 +44,15 @@ class HomeFragment :
             viewModel.getState()
             viewModel.homeState.observe(viewLifecycleOwner) { state ->
                 when(state) {
-                    is Resource.Success -> {
+                    is ResultHome.Success -> {
                         state.data?.let { adapter.setData(it) }
-                        widget.textBalance.text = state.totalAmount.toString()
+                        widget.textBalance.text = "${state.totalAmount.toString()} ${state.currency}"
                         textEmpty.isVisible = false
                     }
-                    is Resource.Empty -> {
+                    is ResultHome.Empty -> {
                         textEmpty.isVisible = true
                     }
-                    is Resource.Error -> {
+                    is ResultHome.Error -> {
                         Toast.makeText(context, "Error ${state.message}", Toast.LENGTH_SHORT).show()
                     }
                 }

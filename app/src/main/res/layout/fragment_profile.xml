@@ -11,11 +11,11 @@
         android:id="@+id/avatarImageViewShader"
         android:layout_width="150dp"
         android:layout_height="150dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="64dp"
         android:src="@drawable/ic_launcher_background"
         app:aivs_borderColor="@color/teal_200"
         app:aivs_borderWidth="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/upBar" />
 
@@ -24,22 +24,23 @@
         style="@style/textWastesDetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/avatarImageViewShader"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/avatarImageViewShader"
-        tools:text="Name" />
+        app:layout_constraintStart_toEndOf="@+id/avatarImageViewShader"
+        app:layout_constraintTop_toTopOf="@+id/avatarImageViewShader"
+        tools:text="Name₽$€₤₴" />
 
     <TextView
         android:id="@+id/textAge"
+        style="@style/textWastesDetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        tools:text="age"
-        style="@style/textWastesDetail"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="@+id/textName"
         app:layout_constraintStart_toStartOf="@+id/textName"
-        app:layout_constraintTop_toBottomOf="@+id/textName" />
+        app:layout_constraintTop_toBottomOf="@+id/textName"
+        tools:text="age" />
 
     <include
         android:id="@+id/upBar"
@@ -54,10 +55,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:text="@string/app_theme"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textAge" />
+        app:layout_constraintTop_toBottomOf="@+id/avatarImageViewShader" />
 
 
     <RadioGroup
@@ -89,4 +90,18 @@
             android:layout_height="wrap_content"
             android:text="@string/white" />
     </RadioGroup>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/matButtonSetUpCurrencies"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/ragioGroop"
+        app:layout_constraintStart_toStartOf="@+id/ragioGroop"
+        app:layout_constraintTop_toBottomOf="@+id/ragioGroop"
+        style="@style/matButtonSelectedCurrency"
+        tools:text="@string/currencies_in_the_app"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

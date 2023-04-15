@@ -10,4 +10,11 @@
     <string name="white">White</string>
     <string name="dark">Dark</string>
     <string name="system">System</string>
+    <string name="spendingapp">SpendingApp</string>
+    <string name="keep_track_of_your_expenses_simply_and_conveniently">Keep track of your expenses simply and conveniently!</string>
+    <string name="right_now">Right Now →</string>
+    <string name="create_account">Create Account</string>
+    <string name="name">Name</string>
+    <string name="age">Age</string>
+    <string name="currencies_in_the_app">Currencies in the app</string>
 </resources>

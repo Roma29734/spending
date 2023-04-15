@@ -1,5 +1,8 @@
 package com.example.spending.ui.main.viewModel
 
+import android.app.Application
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.spending.data.model.UserEntity
@@ -10,8 +13,11 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
 
 class MainViewModel @Inject constructor(
-    private val repository: SpendingRepository
-): ViewModel() {
+    private val repository: SpendingRepository,
+    application: Application
+): AndroidViewModel(application) {
+
+    private val context = application
 
     private var _stateCreateTable: MutableLiveData<Boolean> = MutableLiveData()
     val stateCreateTable get() = _stateCreateTable
@@ -39,5 +45,20 @@ class MainViewModel @Inject constructor(
             }, onError = {
 
             })
+    }
+
+
+    fun saveDate(state: String) {
+        val sheared = context.getSharedPreferences("currency", AppCompatActivity.MODE_PRIVATE)
+
+        sheared.edit().apply{
+            putString("CURRENCY_KEY", state)
+        }.apply()
+    }
+
+    fun loadData(): String? {
+        val sheared = context.getSharedPreferences("currency", AppCompatActivity.MODE_PRIVATE)
+
+        return sheared.getString("CURRENCY_KEY", null)
     }
 }
