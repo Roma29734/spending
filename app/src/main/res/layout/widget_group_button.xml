@@ -17,7 +17,6 @@
         app:layout_constraintTop_toTopOf="parent"
         style="@style/matButtonConnectWallet"
         android:text="received"
-        android:backgroundTint="@color/whiteGreen"
         android:textColor="@color/black"
         />
 
@@ -28,9 +27,8 @@
         android:layout_height="64dp"
         android:layout_marginStart="48dp"
         android:layout_marginEnd="16dp"
-        android:backgroundTint="@color/mainBLue"
         android:text="spent"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/matButtonReceived"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/matButtonReceived"

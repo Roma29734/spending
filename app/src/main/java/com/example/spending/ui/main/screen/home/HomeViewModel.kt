@@ -5,11 +5,8 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.example.spending.data.model.WastesEntity
 import com.example.spending.data.repository.SpendingRepository
-import com.example.spending.data.repository.SpendingRepositoryImpl
-import com.example.spending.utils.Resource
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.kotlin.subscribeBy

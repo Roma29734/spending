@@ -8,7 +8,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="secondWhite">#EEEBEE</color>
+    <color name="secondWhite">#FFFBFA</color>
+    <color name="pinkWhite">#F7EDEB</color>
+    <color name="pink">#FFB494</color>
     <color name="mainRed">#5D0125</color>
     <color name="mainWhiteRed">#6C1831</color>
     <color name="mainLightWhiteRed">#E46471</color>
@@ -18,5 +20,6 @@
     <color name="mainGreen">#0DB24B</color>
     <color name="whiteGreen">#CAFCC4</color>
     <color name="mainBLue">#443AD8</color>
+    <color name="whiteBlue">#A2C8FE</color>
 
 </resources>

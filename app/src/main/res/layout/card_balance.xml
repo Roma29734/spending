@@ -33,14 +33,12 @@
 
             <TextView
                 android:id="@+id/textBalance"
-                style="@style/mainTitleText"
+                style="@style/mainTextCartBalance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginBottom="16dp"
                 android:text="300$"
-
-                android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -50,7 +48,8 @@
                 android:layout_width="86dp"
                 android:layout_height="86dp"
                 android:layout_marginEnd="32dp"
-                android:tint="@color/white"
+                style="@style/imageBackButton"
+                android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
